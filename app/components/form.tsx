@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { useFormState } from 'react-dom';
 import {
     CheckIcon,
     ClockIcon,
@@ -10,44 +9,12 @@ import {
     UserIcon
 } from '@heroicons/react/24/outline';
 import SubmitButton from '@/app/components/submitButton';
-import { createInvoice } from '@/app/lib/actions';
-import { SignInSchema } from '@/app/lib/schemas-client'
-import { useRef } from 'react';
 
 export default function Form({ providers }) {
-    const initialState = { message: null, errors: {} };
-    const ref = useRef<HTMLFormElement>(null);
-    const clientAction = async (prevState, formData: FormData) => {
-        const newForm = {
-            amount: formData.get('amount'),
-            status: formData.get('status'),
-            provider_id: formData.get('provider_id'),
-            name: formData.get('name'),
-            email: formData.get('email')
-        };
-
-        const result = SignInSchema.safeParse(newForm);
-
-        console.log('result: ', result)
-        if (!result.success) {
-            return {
-                errors: result.error.flatten().fieldErrors,
-                message: 'Missing Fields. Failed to Create Invoice.',
-            };
-        }
-
-        const serverResult = await createInvoice(formData);
-
-        console.log('serverResult: ', serverResult);
-        ref.current?.reset();
-        return serverResult;
-    }
-
-    const [state, dispatch] = useFormState(clientAction, initialState);
-    console.log('state1', state);
-
+    const state = {};
+    
     return (
-        <form action={dispatch} ref={ref}>
+        <form>
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
                 <div className="mb-4">
                     <label htmlFor="name" className="mb-2 block text-sm font-medium">

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { DeleteRecord } from '@/app/components/deleteRecord';
 import InvoiceStatus from '@/app/components/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
