@@ -23,6 +23,15 @@ export const fetchProviders = async () => {
     return data;
 }
 
+export const deleteUserById = async (id: number) => {
+    const supabase = createServerComponentClient({ cookies });
+
+    await supabase
+        .from('users')
+        .delete()
+        .eq('id', id);
+}
+
 export const checkIfEmailIsValid = async (email: string) => {
     const supabase = createServerComponentClient({cookies});
     const { data } = await supabase

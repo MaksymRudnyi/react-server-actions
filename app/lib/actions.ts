@@ -3,6 +3,7 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache'
 import { SignInSchemaWithEmailCheck} from '@/app/lib/schemas-server'
+import { deleteUserById } from './data';
 
 export type State = {
   errors?: {
@@ -46,3 +47,13 @@ export const createInvoice = async (formData: FormData) => {
   console.log('validatedFields: ', validatedFields)
 }
 
+export const deleteUser = async (id: number) => {
+  console.log('id to delete: ', id)
+  try {
+    await deleteUserById(id);
+  } catch(e) {
+    console.log('failed to delete record')
+  }
+  
+  revalidatePath('/')
+}

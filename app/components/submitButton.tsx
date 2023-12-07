@@ -5,7 +5,7 @@ const SubmitButton = () => {
     const status = useFormStatus();
     console.log('status: ', status)
 
-    return <Button disabled={status.pending} type='submit'>Submit</Button>
+    return <Button aria-disabled={status.pending} type='submit'>Submit</Button>
 }
 
 export default SubmitButton;

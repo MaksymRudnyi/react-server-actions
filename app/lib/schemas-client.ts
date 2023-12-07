@@ -14,7 +14,7 @@ export const SignInSchema = z.object({
       .number()
       .gt(0, { message: 'Please enter an amount greater than $0.' }),
     status: z.enum(['pending', 'paid'], {
-      invalid_type_error: 'Please select an invoice status.',
+      invalid_type_error: 'Please select a status.',
     }),
     date: z.string().optional(),
   });

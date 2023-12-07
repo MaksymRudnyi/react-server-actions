@@ -58,7 +58,6 @@ export default function Form({ providers }) {
                             <input
                                 id="name"
                                 name="name"
-                                step="0.01"
                                 placeholder="Enter your name"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                             />
@@ -102,7 +101,6 @@ export default function Form({ providers }) {
                     </div>
                 </div>
 
-                {/* Customer Name */}
                 <div className="mb-4">
                     <label htmlFor="provider" className="mb-2 block text-sm font-medium">
                         Choose provider
@@ -136,7 +134,6 @@ export default function Form({ providers }) {
                     </div>
                 </div>
 
-                {/* Invoice Amount */}
                 <div className="mb-4">
                     <label htmlFor="amount" className="mb-2 block text-sm font-medium">
                         Choose an amount
@@ -203,11 +200,19 @@ export default function Form({ providers }) {
                             </div>
                         </div>
                     </div>
+                    <div id="status-error" aria-live="polite" aria-atomic="true">
+                            {state?.errors?.status &&
+                                state.errors.status.map((error: string) => (
+                                    <p className="mt-2 text-sm text-red-500" key={error}>
+                                        {error}
+                                    </p>
+                                ))}
+                        </div>
                 </fieldset>
             </div>
             <div className="mt-6 flex justify-end gap-4">
                 <Link
-                    href="/dashboard/invoices"
+                    href="/"
                     className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
                 >
                     Cancel

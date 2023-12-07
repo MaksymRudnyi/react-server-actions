@@ -1,5 +1,5 @@
 import Image from 'next/image';
-// import { UpdateInvoice, DeleteInvoice } from '@/app/ui/users/buttons';
+import { DeleteRecord } from '@/app/components/deleteRecord';
 import InvoiceStatus from '@/app/components/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchUsers } from '@/app/lib/data';
@@ -34,7 +34,7 @@ export default async function Table() {
                   Provider
                 </th>
                 <th scope="col" className="relative py-3 pl-6 pr-3">
-                  <span className="sr-only">Edit</span>
+                  <span>Delete</span>
                 </th>
               </tr>
             </thead>
@@ -66,8 +66,8 @@ export default async function Table() {
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      {/* <UpdateInvoice id={user.id} />
-                      <DeleteInvoice id={user.id} /> */}
+                      {/* <UpdateInvoice id={user.id} />*/}
+                      <DeleteRecord id={user.id} /> 
                     </div>
                   </td>
                 </tr>
